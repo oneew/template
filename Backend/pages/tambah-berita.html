@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSIRT PALI - Buat Artikel Berita</title>
+
+  <!-- Tailwind CSS & Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="flex min-h-screen">
+    <!-- Sidebar (tidak diubah) -->
+    <aside class="w-64 bg-gray-900 text-white flex-shrink-0">
+      <div class="px-6 py-4 font-bold text-lg border-b border-gray-700">
+        CSIRT PALI
+      </div>
+      <nav class="flex flex-col space-y-1 p-4">
+        <a href="dashboard.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-house w-5"></i> <span class="ml-2">Dasbor</span>
+        </a>
+        <a href="incidents.html" class="flex items-center px-3 py-2 rounded-lg bg-blue-600">
+          <i class="fa-solid fa-triangle-exclamation w-5"></i> <span class="ml-2">Laporan Insiden</span>
+        </a>
+        <a href="services.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-gears w-5"></i> <span class="ml-2">Layanan</span>
+        </a>
+        <a href="gallery.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-images w-5"></i> <span class="ml-2">Galeri</span>
+        </a>
+        <a href="news.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-newspaper w-5"></i> <span class="ml-2">Berita</span>
+        </a>
+        <a href="content.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-file-alt w-5"></i> <span class="ml-2">Manajemen Konten</span>
+        </a>
+        <a href="rfc.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-book w-5"></i> <span class="ml-2">RFC 2350</span>
+        </a>
+        <a href="contact.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-envelope w-5"></i> <span class="ml-2">Kontak</span>
+        </a>
+        <hr class="border-gray-700 my-2">
+        <a href="users.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-users w-5"></i> <span class="ml-2">Pengguna</span>
+        </a>
+        <a href="profile.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-user-circle w-5"></i> <span class="ml-2">Profil Saya</span>
+        </a>
+        <a href="settings.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-cog w-5"></i> <span class="ml-2">Pengaturan</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Page Content -->
+    <main class="flex-1 p-8 overflow-y-auto">
+      <div class="bg-white rounded-lg shadow p-6">
+        <!-- Header -->
+        <div class="flex items-center justify-between border-b pb-4 mb-6">
+          <h1 class="text-xl font-semibold flex items-center gap-2">
+            <i class="fas fa-newspaper"></i> Buat Artikel Berita
+          </h1>
+          <div class="flex gap-2">
+            <button type="button" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+              <i class="fas fa-save"></i> Simpan Draft
+            </button>
+            <a href="news.html" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+              <i class="fas fa-arrow-left"></i> Kembali
+            </a>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form class="space-y-6">
+          <!-- Judul -->
+          <div>
+            <label for="title" class="block font-medium mb-1">Judul Artikel <span class="text-red-500">*</span></label>
+            <input type="text" id="title" class="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-200" required>
+          </div>
+
+          <!-- Kategori & Prioritas -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="category" class="block font-medium mb-1">Kategori</label>
+              <select id="category" class="w-full border rounded-lg px-3 py-2">
+                <option>Pilih kategori</option>
+                <option>Security Alert</option>
+                <option>Incident Report</option>
+                <option>General</option>
+              </select>
+            </div>
+            <div>
+              <label for="priority" class="block font-medium mb-1">Prioritas</label>
+              <select id="priority" class="w-full border rounded-lg px-3 py-2">
+                <option>Low</option>
+                <option selected>Medium</option>
+                <option>High</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Ringkasan -->
+          <div>
+            <label for="summary" class="block font-medium mb-1">Ringkasan Artikel</label>
+            <textarea id="summary" rows="3" class="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-200"></textarea>
+          </div>
+
+          <!-- Konten -->
+          <div>
+            <label for="content" class="block font-medium mb-1">Isi Artikel</label>
+            <textarea id="content" rows="6" class="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-200"></textarea>
+          </div>
+
+          <!-- Upload -->
+          <div>
+            <label class="block font-medium mb-1">Gambar Utama</label>
+            <input type="file" accept="image/*" class="block w-full text-sm text-gray-500 border rounded-lg cursor-pointer focus:outline-none">
+          </div>
+
+          <!-- Upload Tambahan -->
+          <div>
+            <label class="block font-medium mb-1">Foto Tambahan</label>
+            <input type="file" multiple accept="image/*" class="block w-full text-sm text-gray-500 border rounded-lg cursor-pointer focus:outline-none">
+          </div>
+
+          <!-- Upload File -->
+          <div>
+            <label class="block font-medium mb-1">Lampiran File (PDF, DOC, dll.)</label>
+            <input type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx" class="block w-full text-sm text-gray-500 border rounded-lg cursor-pointer focus:outline-none">
+          </div>
+
+          <!-- SEO -->
+          <div class="border-t pt-6">
+            <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+              <i class="fas fa-search"></i> Pengaturan SEO
+            </h2>
+
+            <div class="space-y-4">
+              <div>
+                <label for="slug" class="block font-medium mb-1">Slug URL</label>
+                <input type="text" id="slug" class="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-200" placeholder="contoh-artikel-berita">
+              </div>
+              <div>
+                <label for="meta-title" class="block font-medium mb-1">Meta Title</label>
+                <input type="text" id="meta-title" class="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-200">
+              </div>
+              <div>
+                <label for="meta-description" class="block font-medium mb-1">Meta Description</label>
+                <textarea id="meta-description" rows="2" class="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-200"></textarea>
+              </div>
+              <div>
+                <label for="meta-keywords" class="block font-medium mb-1">Meta Keywords</label>
+                <input type="text" id="meta-keywords" class="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-200" placeholder="berita, keamanan, insiden">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tombol -->
+          <div class="flex justify-end gap-2 pt-6 border-t">
+            <button type="reset" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+              <i class="fas fa-times"></i> Batal
+            </button>
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+              <i class="fas fa-paper-plane"></i> Publikasikan
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

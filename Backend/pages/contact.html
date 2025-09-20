@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSIRT PALI - Dasbor Admin</title>
+  
+  <!-- Tailwind CSS & Font Awesome for icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- Chart.js for beautiful charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body class="bg-gray-50">
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-logo">CSIRT PALI</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" data-page="dashboard" class="nav-link"><i class="fa-solid fa-house"></i> Dasbor</a>
+        <a href="incidents.html" data-page="incidents" class="nav-link"><i class="fa-solid fa-triangle-exclamation"></i> Laporan Insiden</a>
+        <a href="services.html" data-page="services" class="nav-link"><i class="fa-solid fa-gears"></i> Layanan</a>
+        <a href="gallery.html" data-page="gallery" class="nav-link"><i class="fa-solid fa-images"></i> Galeri</a>
+        <a href="news.html" data-page="news" class="nav-link"><i class="fa-solid fa-newspaper"></i> Berita</a>
+        <a href="content.html" data-page="content" class="nav-link"><i class="fa-solid fa-file-alt"></i> Manajemen Konten</a>
+        <a href="rfc.html" data-page="rfc" class="nav-link"><i class="fa-solid fa-book"></i> RFC 2350</a>
+        <a href="contact.html" data-page="contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Kontak</a>
+        <hr class="border-gray-700 my-2">
+        <a href="users.html" data-page="users" class="nav-link"><i class="fa-solid fa-users"></i> Pengguna</a>
+        <a href="profile.html" data-page="profile" class="nav-link"><i class="fa-solid fa-user-circle"></i> Profil Saya</a>
+        <a href="settings.html" data-page="settings" class="nav-link"><i class="fa-solid fa-cog"></i> Pengaturan</a>
+      </nav>
+    </aside>
+ <!-- Main Content -->
+ <main class="main-content" id="mainContent">
+    <header class="header">
+      <div class="flex items-center gap-4">
+        <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <h1 class="page-title" id="pageTitle">Kontak</h1>
+      </div>
+      <div class="header-right">
+          <i class="fa-regular fa-bell header-icon"></i>
+          <div class="profile-dropdown">
+              <img src="https://placehold.co/100x100/3B82F6/FFFFFF?text=A" alt="Avatar Admin">
+          </div>
+      </div>
+    </header>
+    <div class="page-content" id="pageContent">
+ <!-- Contact View -->
+  <div id="contact-view" class="view">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="md:col-span-2 card">
+            <div class="card-header"><h3 class="card-title"><i class="fas fa-paper-plane"></i> Kirim Pesan kepada Kami</h3></div>
+            <form class="card-content space-y-4">
+                <div class="form-group required">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-input" required>
+                </div>
+                <div class="form-group required">
+                    <label class="form-label">Alamat Email</label>
+                    <input type="email" class="form-input" required>
+                </div>
+                <div class="form-group required">
+                    <label class="form-label">Pesan Anda</label>
+                    <textarea class="form-textarea" rows="5" required></textarea>
+                </div>
+                <div class="pt-2">
+                    <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                </div>
+            </form>
+        </div>
+        <div class="card">
+            <div class="card-header"><h3 class="card-title"><i class="fas fa-map-marker-alt"></i> Informasi Kontak</h3></div>
+            <div class="card-content space-y-3">
+                <p><strong>Alamat:</strong><br>Jl. Merdeka No. 1, Kabupaten PALI</p>
+                <p><strong>Telepon:</strong><br>(0711) 123456</p>
+                <p><strong>Email:</strong><br>csirt@pali.go.id</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</main>
+</div>
+</body>
+</html>

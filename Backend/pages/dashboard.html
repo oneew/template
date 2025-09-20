@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSIRT PALI - Dasbor Admin</title>
+  
+  <!-- Tailwind CSS & Font Awesome for icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- Chart.js for beautiful charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body class="bg-gray-50">
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-logo">CSIRT PALI</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" data-page="dashboard" class="nav-link active"><i class="fa-solid fa-house"></i> Dasbor</a>
+        <a href="incidents.html" data-page="incidents" class="nav-link"><i class="fa-solid fa-triangle-exclamation"></i> Laporan Insiden</a>
+        <a href="services.html" data-page="services" class="nav-link"><i class="fa-solid fa-gears"></i> Layanan</a>
+        <a href="gallery.html" data-page="gallery" class="nav-link"><i class="fa-solid fa-images"></i> Galeri</a>
+        <a href="news.html" data-page="news" class="nav-link"><i class="fa-solid fa-newspaper"></i> Berita</a>
+        <a href="content.html" data-page="content" class="nav-link"><i class="fa-solid fa-file-alt"></i> Manajemen Konten</a>
+        <a href="rfc.html" data-page="rfc" class="nav-link"><i class="fa-solid fa-book"></i> RFC 2350</a>
+        <a href="contact.html" data-page="contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Kontak</a>
+        <hr class="border-gray-700 my-2">
+        <a href="users.html" data-page="users" class="nav-link"><i class="fa-solid fa-users"></i> Pengguna</a>
+        <a href="profile.html" data-page="profile" class="nav-link"><i class="fa-solid fa-user-circle"></i> Profil Saya</a>
+        <a href="settings.html" data-page="settings" class="nav-link"><i class="fa-solid fa-cog"></i> Pengaturan</a>
+      </nav>
+    </aside>
+     <!-- Main Content -->
+ <main class="main-content" id="mainContent">
+    <header class="header">
+      <div class="flex items-center gap-4">
+        <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <h1 class="page-title" id="pageTitle">Dashboard</h1>
+      </div>
+      <div class="header-right">
+          <i class="fa-regular fa-bell header-icon"></i>
+          <div class="profile-dropdown">
+              <img src="https://placehold.co/100x100/3B82F6/FFFFFF?text=A" alt="Avatar Admin">
+          </div>
+      </div>
+    </header>
+    <!-- Page Content -->
+    <div class="page-content p-6" id="pageContent">
+
+        <!-- Dashboard View -->
+        <div id="dashboard-view" class="view">
+
+          <!-- Statistik Ringkas -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            <div class="card p-5 bg-white shadow rounded-lg">
+              <div class="flex justify-between items-start">
+                <div>
+                  <span class="text-sm text-gray-500">Total Insiden</span>
+                  <span class="text-3xl font-bold mt-1">254</span>
+                </div>
+                <div class="bg-blue-100 text-blue-600 p-3 rounded-full">
+                  <i class="fa-solid fa-exclamation-triangle"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-5 bg-white shadow rounded-lg">
+              <div class="flex justify-between items-start">
+                <div>
+                  <span class="text-sm text-gray-500">Insiden Kritis</span>
+                  <span class="text-3xl font-bold mt-1">12</span>
+                </div>
+                <div class="bg-red-100 text-red-600 p-3 rounded-full">
+                  <i class="fa-solid fa-fire"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-5 bg-white shadow rounded-lg">
+              <div class="flex justify-between items-start">
+                <div>
+                  <span class="text-sm text-gray-500">Berita Diterbitkan</span>
+                  <span class="text-3xl font-bold mt-1">67</span>
+                </div>
+                <div class="bg-green-100 text-green-600 p-3 rounded-full">
+                  <i class="fa-solid fa-newspaper"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-5 bg-white shadow rounded-lg">
+              <div class="flex justify-between items-start">
+                <div>
+                  <span class="text-sm text-gray-500">Gambar Galeri</span>
+                  <span class="text-3xl font-bold mt-1">120</span>
+                </div>
+                <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full">
+                  <i class="fa-solid fa-images"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Statistik Detail -->
+          <div class="stats-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            <div class="stat-card bg-white shadow p-4 rounded-lg">
+              <div class="stat-header flex justify-between items-center">
+                <div class="stat-icon text-blue-500"><i class="fa-solid fa-users"></i></div>
+                <div class="stat-change text-green-500"><i class="fa-solid fa-arrow-up"></i> +5.2%</div>
+              </div>
+              <div class="stat-number text-2xl font-bold mt-2">--</div>
+              <div class="stat-label text-sm text-gray-500">Total Users</div>
+            </div>
+
+            <div class="stat-card bg-white shadow p-4 rounded-lg">
+              <div class="stat-header flex justify-between items-center">
+                <div class="stat-icon text-yellow-500"><i class="fa-solid fa-exclamation-triangle"></i></div>
+                <div class="stat-change text-red-500"><i class="fa-solid fa-arrow-down"></i> -2.1%</div>
+              </div>
+              <div class="stat-number text-2xl font-bold mt-2">--</div>
+              <div class="stat-label text-sm text-gray-500">Total Incidents</div>
+            </div>
+
+            <div class="stat-card bg-white shadow p-4 rounded-lg">
+              <div class="stat-header flex justify-between items-center">
+                <div class="stat-icon text-red-500"><i class="fa-solid fa-fire"></i></div>
+                <div class="stat-change text-red-600"><i class="fa-solid fa-exclamation"></i> Critical</div>
+              </div>
+              <div class="stat-number text-2xl font-bold mt-2">--</div>
+              <div class="stat-label text-sm text-gray-500">Open Incidents</div>
+            </div>
+
+            <div class="stat-card bg-white shadow p-4 rounded-lg">
+              <div class="stat-header flex justify-between items-center">
+                <div class="stat-icon text-green-500"><i class="fa-solid fa-newspaper"></i></div>
+                <div class="stat-change text-green-500"><i class="fa-solid fa-arrow-up"></i> +12.5%</div>
+              </div>
+              <div class="stat-number text-2xl font-bold mt-2">--</div>
+              <div class="stat-label text-sm text-gray-500">Published News</div>
+            </div>
+          </div>
+
+          <!-- Grafik & Aktivitas -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Grafik -->
+            <div class="lg:col-span-2 card bg-white shadow rounded-lg">
+              <div class="card-header p-4 border-b">
+                <h3 class="card-title font-semibold">Statistik Insiden Tahunan</h3>
+              </div>
+              <div class="card-content p-4">
+                <canvas id="incidentChart" height="250"></canvas>
+              </div>
+            </div>
+
+            <!-- Aktivitas -->
+           <!-- Aktivitas -->
+<div class="card bg-white shadow rounded-lg">
+    <div class="card-header p-4 border-b">
+      <h3 class="card-title font-semibold text-lg">Aktivitas Terbaru</h3>
+    </div>
+    <div class="card-content p-4">
+      <ul class="space-y-3">
+        
+        <!-- Item -->
+        <li class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full bg-red-100 text-red-600">
+            <i class="fa-solid fa-exclamation-triangle"></i>
+          </div>
+          <div class="flex-1">
+            <p class="font-medium">Serangan Ransomware</p>
+            <p class="text-xs text-gray-500">30 menit yang lalu</p>
+          </div>
+        </li>
+  
+        <li class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full bg-yellow-100 text-yellow-600">
+            <i class="fa-solid fa-database"></i>
+          </div>
+          <div class="flex-1">
+            <p class="font-medium">Pelanggaran Data Pengguna</p>
+            <p class="text-xs text-gray-500">2 jam yang lalu</p>
+          </div>
+        </li>
+  
+        <li class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-600">
+            <i class="fa-solid fa-power-off"></i>
+          </div>
+          <div class="flex-1">
+            <p class="font-medium">Sistem Gagal Diperbarui</p>
+            <p class="text-xs text-gray-500">5 jam yang lalu</p>
+          </div>
+        </li>
+      </ul>
+  
+      <!-- Tombol Aksi -->
+      <div class="mt-4 grid grid-cols-2 gap-2">
+        <a href="/admin/incidents/create" class="btn bg-blue-600 text-white py-2 px-3 rounded-lg text-sm hover:bg-blue-700">
+          <i class="fa-solid fa-plus mr-1"></i> Create Incident
+        </a>
+        <a href="/admin/news/create" class="btn bg-green-600 text-white py-2 px-3 rounded-lg text-sm hover:bg-green-700">
+          <i class="fa-solid fa-newspaper mr-1"></i> Publish News
+        </a>
+        <a href="/admin/users/create" class="btn bg-gray-600 text-white py-2 px-3 rounded-lg text-sm hover:bg-gray-700">
+          <i class="fa-solid fa-user-plus mr-1"></i> Add User
+        </a>
+        <a href="/admin/reports" class="btn bg-purple-600 text-white py-2 px-3 rounded-lg text-sm hover:bg-purple-700">
+          <i class="fa-solid fa-chart-line mr-1"></i> Generate Report
+        </a>
+      </div>
+    </div>
+  </div>
+  
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+</div>
+</body>
+</html>

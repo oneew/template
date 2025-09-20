@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSIRT PALI - Dasbor Admin</title>
+  
+  <!-- Tailwind CSS & Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 font-inter">
+  <div class="admin-layout flex">
+    <!-- Sidebar -->
+    <aside class="sidebar bg-gray-900 text-white w-64 min-h-screen" id="sidebar">
+      <div class="sidebar-header p-4 text-lg font-bold border-b border-gray-700">
+        <span class="sidebar-logo">CSIRT PALI</span>
+      </div>
+      <nav class="sidebar-nav flex flex-col p-2 space-y-1">
+        <a href="dashboard.html" data-page="dashboard" class="nav-link px-4 py-2 rounded hover:bg-gray-800"><i class="fa-solid fa-house mr-2"></i> Dasbor</a>
+        <a href="incidents.html" data-page="incidents" class="nav-link px-4 py-2 rounded hover:bg-gray-800"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Laporan Insiden</a>
+        <a href="services.html" data-page="services" class="nav-link px-4 py-2 rounded hover:bg-gray-800"><i class="fa-solid fa-gears mr-2"></i> Layanan</a>
+        <a href="gallery.html" data-page="gallery" class="nav-link px-4 py-2 rounded hover:bg-gray-800"><i class="fa-solid fa-images mr-2"></i> Galeri</a>
+        <a href="news.html" data-page="news" class="nav-link px-4 py-2 rounded hover:bg-gray-800"><i class="fa-solid fa-newspaper mr-2"></i> Berita</a>
+        <a href="content.html" data-page="content" class="nav-link bg-gray-800 px-4 py-2 rounded"><i class="fa-solid fa-file-alt mr-2"></i> Manajemen Konten</a>
+        <a href="rfc.html" data-page="rfc" class="nav-link px-4 py-2 rounded hover:bg-gray-800"><i class="fa-solid fa-book mr-2"></i> RFC 2350</a>
+        <a href="contact.html" data-page="contact" class="nav-link px-4 py-2 rounded hover:bg-gray-800"><i class="fa-solid fa-envelope mr-2"></i> Kontak</a>
+        <hr class="border-gray-700 my-2">
+        <a href="users.html" data-page="users" class="nav-link px-4 py-2 rounded hover:bg-gray-800"><i class="fa-solid fa-users mr-2"></i> Pengguna</a>
+        <a href="profile.html" data-page="profile" class="nav-link px-4 py-2 rounded hover:bg-gray-800"><i class="fa-solid fa-user-circle mr-2"></i> Profil Saya</a>
+        <a href="settings.html" data-page="settings" class="nav-link px-4 py-2 rounded hover:bg-gray-800"><i class="fa-solid fa-cog mr-2"></i> Pengaturan</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content flex-1" id="mainContent">
+      <!-- Header -->
+      <header class="header flex justify-between items-center bg-white shadow p-4">
+        <div class="flex items-center gap-4">
+          <button class="sidebar-toggle text-gray-700" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+          <h1 class="page-title font-semibold text-xl" id="pageTitle">Manajemen Konten</h1>
+        </div>
+        <div class="header-right flex items-center gap-4">
+          <i class="fa-regular fa-bell text-gray-600 text-lg"></i>
+          <div class="profile-dropdown w-10 h-10 rounded-full overflow-hidden border-2 border-gray-200">
+            <img src="https://placehold.co/100x100/3B82F6/FFFFFF?text=A" alt="Avatar Admin" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="page-content p-6" id="pageContent">
+        <div id="content-view" class="view">
+          <form class="form-card bg-white shadow-md rounded-xl p-6 space-y-6">
+            <!-- Tentang Kami -->
+            <div class="form-section">
+              <h3 class="section-title font-semibold text-lg mb-3">Kelola Tentang Kami</h3>
+              <div class="form-group">
+                <label for="about-us-text" class="form-label block font-medium mb-2">Teks Tentang Kami <span class="text-red-500">*</span></label>
+                <textarea id="about-us-text" name="about-us-text" class="form-textarea w-full border rounded-lg p-3" rows="6" required>CSIRT PALI is a collaborative network of cybersecurity incident response teams across the Americas, dedicated to strengthening cybersecurity, sharing critical information, and enhancing incident response capabilities among member countries. We are committed to building a safer and more resilient digital ecosystem through collaboration, training, and knowledge exchange.</textarea>
+              </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="form-section">
+              <h3 class="section-title font-semibold text-lg mb-3">Kelola Pertanyaan Umum (FAQ)</h3>
+              <div class="mb-4">
+                <label class="form-label font-medium">Daftar FAQ</label>
+                <ul id="faq-list" class="space-y-2 mt-2">
+                  <li class="flex justify-between items-center bg-gray-100 p-3 rounded-lg">
+                    <span class="font-medium text-gray-800">1. What is the main objective of CSIRT PALI?</span>
+                    <div>
+                      <button type="button" class="text-blue-500 hover:text-blue-700 mx-1 edit-faq-btn" data-id="1"><i class="fas fa-edit"></i></button>
+                      <button type="button" class="text-red-500 hover:text-red-700 mx-1 delete-faq-btn" data-id="1"><i class="fas fa-trash"></i></button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="form-grid grid gap-4">
+                <div>
+                  <label for="faq-question" class="form-label block mb-1">Pertanyaan Baru</label>
+                  <input type="text" id="faq-question" class="form-input w-full border rounded-lg p-2" placeholder="Masukkan pertanyaan baru...">
+                </div>
+                <div>
+                  <label for="faq-answer" class="form-label block mb-1">Jawaban</label>
+                  <textarea id="faq-answer" class="form-textarea w-full border rounded-lg p-2" rows="3" placeholder="Masukkan jawaban..."></textarea>
+                </div>
+                <div class="flex justify-end">
+                  <button type="button" id="add-faq-btn" class="btn btn-primary bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"><i class="fas fa-plus"></i> Tambah FAQ</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mitra -->
+            <div class="form-section">
+              <h3 class="section-title font-semibold text-lg mb-3">Kelola Mitra</h3>
+              <div class="mb-4">
+                <label class="form-label font-medium">Logo Mitra</label>
+                <div id="partner-logos" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-2">
+                  <div class="relative group rounded-lg overflow-hidden shadow-md" data-id="PART-001">
+                    <img src="https://placehold.co/100x100" alt="Logo Mitra 1" class="w-full h-auto object-cover">
+                    <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button class="bg-red-500 text-white p-1 rounded-full hover:bg-red-600 delete-partner-btn"><i class="fas fa-trash text-sm"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-grid grid gap-4">
+                <div>
+                  <label for="partner-name" class="form-label block mb-1">Nama Mitra</label>
+                  <input type="text" id="partner-name" class="form-input w-full border rounded-lg p-2" placeholder="Nama perusahaan mitra">
+                </div>
+                <div>
+                  <label for="partner-logo-file" class="form-label block mb-1">Unggah Logo</label>
+                  <input type="file" id="partner-logo-file" name="logo" accept="image/*" class="w-full border rounded-lg p-2">
+                </div>
+                <div class="flex justify-end">
+                  <button type="button" id="add-partner-btn" class="btn btn-primary bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"><i class="fas fa-plus"></i> Tambah Mitra</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-actions-bottom flex justify-end">
+              <button type="submit" class="btn btn-primary bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg">
+                <i class="fas fa-save"></i> Simpan Semua Perubahan
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSIRT PALI - Create User</title>
+  
+  <!-- Tailwind CSS & Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .step.active .step-number { @apply bg-blue-600 text-white; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-900 text-white flex-shrink-0">
+      <div class="px-6 py-4 font-bold text-lg border-b border-gray-700">
+        CSIRT PALI
+      </div>
+      <nav class="flex flex-col space-y-1 p-4">
+        <a href="dashboard.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-house w-5"></i> <span class="ml-2">Dasbor</span>
+        </a>
+        <a href="incidents.html" class="flex items-center px-3 py-2 rounded-lg bg-blue-600">
+          <i class="fa-solid fa-triangle-exclamation w-5"></i> <span class="ml-2">Laporan Insiden</span>
+        </a>
+        <a href="services.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-gears w-5"></i> <span class="ml-2">Layanan</span>
+        </a>
+        <a href="gallery.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-images w-5"></i> <span class="ml-2">Galeri</span>
+        </a>
+        <a href="news.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-newspaper w-5"></i> <span class="ml-2">Berita</span>
+        </a>
+        <a href="content.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-file-alt w-5"></i> <span class="ml-2">Manajemen Konten</span>
+        </a>
+        <a href="rfc.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-book w-5"></i> <span class="ml-2">RFC 2350</span>
+        </a>
+        <a href="contact.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-envelope w-5"></i> <span class="ml-2">Kontak</span>
+        </a>
+        <hr class="border-gray-700 my-2">
+        <a href="users.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-users w-5"></i> <span class="ml-2">Pengguna</span>
+        </a>
+        <a href="profile.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-user-circle w-5"></i> <span class="ml-2">Profil Saya</span>
+        </a>
+        <a href="settings.html" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-cog w-5"></i> <span class="ml-2">Pengaturan</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Page Content -->
+    <main class="flex-1 p-6">
+      <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow">
+        <h1 class="text-2xl font-bold flex items-center gap-2 mb-6">
+          <i class="fas fa-user-plus text-blue-600"></i> Create New User
+        </h1>
+
+        <!-- Steps Indicator -->
+        <div class="flex items-center justify-between mb-6">
+          <div class="step active flex flex-col items-center" data-step="1">
+            <div class="step-number w-10 h-10 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold">1</div>
+            <p class="mt-2 text-sm font-medium">Basic Info</p>
+          </div>
+          <div class="flex-1 h-0.5 bg-gray-300 mx-2"></div>
+          <div class="step flex flex-col items-center" data-step="2">
+            <div class="step-number w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 text-gray-600 font-bold">2</div>
+            <p class="mt-2 text-sm font-medium">Account</p>
+          </div>
+          <div class="flex-1 h-0.5 bg-gray-300 mx-2"></div>
+          <div class="step flex flex-col items-center" data-step="3">
+            <div class="step-number w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 text-gray-600 font-bold">3</div>
+            <p class="mt-2 text-sm font-medium">Permissions</p>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form id="userForm">
+          <!-- Step 1 -->
+          <div class="form-step" id="step1">
+            <label class="block mb-2 font-medium">Nama Lengkap</label>
+            <input type="text" class="w-full border rounded p-2 mb-4" placeholder="Nama Lengkap">
+
+            <label class="block mb-2 font-medium">Email</label>
+            <input type="email" class="w-full border rounded p-2 mb-4" placeholder="email@example.com">
+
+            <label class="block mb-2 font-medium">Foto Profil</label>
+            <div class="flex flex-col items-center">
+              <img id="avatarPreview" src="https://placehold.co/120x120?text=+" class="w-24 h-24 rounded-full object-cover mb-3">
+              <input type="file" id="avatar" class="hidden" accept="image/*">
+              <button type="button" onclick="document.getElementById('avatar').click()" class="px-3 py-2 bg-gray-200 rounded">Pilih Foto</button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="form-step hidden" id="step2">
+            <label class="block mb-2 font-medium">Username</label>
+            <input type="text" class="w-full border rounded p-2 mb-4" placeholder="username123">
+
+            <label class="block mb-2 font-medium">Password</label>
+            <input type="password" class="w-full border rounded p-2 mb-4" placeholder="********">
+
+            <label class="block mb-2 font-medium">Status Akun</label>
+            <select class="w-full border rounded p-2 mb-4">
+              <option>Active</option>
+              <option>Inactive</option>
+              <option>Pending</option>
+            </select>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="form-step hidden" id="step3">
+            <label class="block mb-2 font-medium">Role</label>
+            <select class="w-full border rounded p-2 mb-4">
+              <option>Administrator</option>
+              <option>Analyst</option>
+              <option>Responder</option>
+              <option>Viewer</option>
+            </select>
+
+            <label class="block mb-2 font-medium">Hak Akses</label>
+            <div class="space-y-2">
+              <label><input type="checkbox" class="mr-2"> Manage Incidents</label><br>
+              <label><input type="checkbox" class="mr-2"> Manage News</label><br>
+              <label><input type="checkbox" class="mr-2"> Manage Users</label>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="flex justify-between mt-6">
+            <button type="button" id="prevBtn" class="px-4 py-2 bg-gray-300 rounded hidden">Previous</button>
+            <button type="button" id="nextBtn" class="px-4 py-2 bg-blue-600 text-white rounded">Next</button>
+            <button type="submit" id="submitBtn" class="px-4 py-2 bg-green-600 text-white rounded hidden">Create User</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const steps = document.querySelectorAll(".form-step");
+    const stepIndicators = document.querySelectorAll(".step-number");
+    let currentStep = 0;
+
+    function showStep(step) {
+      steps.forEach((el, idx) => {
+        el.classList.toggle("hidden", idx !== step);
+        stepIndicators[idx].classList.toggle("bg-blue-600", idx === step);
+        stepIndicators[idx].classList.toggle("text-white", idx === step);
+        stepIndicators[idx].classList.toggle("bg-gray-300", idx !== step);
+        stepIndicators[idx].classList.toggle("text-gray-600", idx !== step);
+      });
+
+      document.getElementById("prevBtn").classList.toggle("hidden", step === 0);
+      document.getElementById("nextBtn").classList.toggle("hidden", step === steps.length - 1);
+      document.getElementById("submitBtn").classList.toggle("hidden", step !== steps.length - 1);
+    }
+
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      if (currentStep < steps.length - 1) currentStep++;
+      showStep(currentStep);
+    });
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      if (currentStep > 0) currentStep--;
+      showStep(currentStep);
+    });
+
+    document.getElementById("avatar").addEventListener("change", function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        document.getElementById("avatarPreview").src = URL.createObjectURL(file);
+      }
+    });
+
+    showStep(currentStep);
+  </script>
+</body>
+</html>
